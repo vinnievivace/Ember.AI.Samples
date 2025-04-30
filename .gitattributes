@@ -1,0 +1,54 @@
+## Unity ##
+*.cs diff=csharp text
+*.cginc text
+*.shader text
+*.mat filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.anim filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.unity filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.prefab filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.physicsMaterial2D filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.physicMaterial filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.meta filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+*.controller filter=lfs diff=lfs merge=unityyamlmerge eol=lf
+## git-lfs ##
+#Image
+*.jpg filter=lfs diff=lfs merge=lfs eol=lf -text
+*.jpeg filter=lfs diff=lfs merge=lfs eol=lf -text
+*.png filter=lfs diff=lfs merge=lfs eol=lf -text
+*.gif filter=lfs diff=lfs merge=lfs eol=lf -text
+*.psd filter=lfs diff=lfs merge=lfs eol=lf -text
+*.ai filter=lfs diff=lfs merge=lfs eol=lf -text
+*.tif filter=lfs diff=lfs merge=lfs eol=lf -text
+*.tiff filter=lfs diff=lfs merge=lfs eol=lf -text
+#Audio
+*.mp3 filter=lfs diff=lfs merge=lfs eol=lf -text
+*.wav filter=lfs diff=lfs merge=lfs eol=lf -text
+*.ogg filter=lfs diff=lfs merge=lfs eol=lf -text
+#Video
+*.mp4 filter=lfs diff=lfs merge=lfs eol=lf -text
+*.mov filter=lfs diff=lfs merge=lfs eol=lf -text
+#3D Object
+*.FBX filter=lfs diff=lfs merge=lfs eol=lf -text
+*.fbx filter=lfs diff=lfs merge=lfs eol=lf -text
+*.blend filter=lfs diff=lfs merge=lfs eol=lf -text
+*.blend1 filter=lfs diff=lfs merge=lfs eol=lf -text
+*.obj filter=lfs diff=lfs merge=lfs eol=lf -text
+*.glb filter=lfs diff=lfs merge=lfs eol=lf -text
+#ETC
+*.a filter=lfs diff=lfs merge=lfs eol=lf -text
+*.exr filter=lfs diff=lfs merge=lfs eol=lf -text
+*.tga filter=lfs diff=lfs merge=lfs eol=lf -text
+*.pdf filter=lfs diff=lfs merge=lfs eol=lf -text
+*.zip filter=lfs diff=lfs merge=lfs eol=lf -text
+*.dll filter=lfs diff=lfs merge=lfs eol=lf -text
+*.unitypackage filter=lfs diff=lfs merge=lfs eol=lf -text
+*.aif filter=lfs diff=lfs merge=lfs eol=lf -text
+*.ttf filter=lfs diff=lfs merge=lfs eol=lf -text
+*.rns filter=lfs diff=lfs merge=lfs eol=lf -text
+*.reason filter=lfs diff=lfs merge=lfs eol=lf -text
+*.lxo filter=lfs diff=lfs merge=lfs eol=lf -text
+# XCODE CLOUD BUILD
+*assets filter=lfs diff=lfs merge=lfs eol=lf -text
+*.hdr filter=lfs diff=lfs merge=lfs -text
+*.gltf filter=lfs diff=lfs merge=lfs -text
+*.Texture2d filter=lfs diff=lfs merge=lfs -text

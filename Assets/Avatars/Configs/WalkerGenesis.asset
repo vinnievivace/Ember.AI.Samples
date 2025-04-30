@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2fe1e05ad74ca2a9696ca04dd0c2e8, type: 3}
+  m_Name: WalkerGenesis
+  m_EditorClassIdentifier: 
+  riggingType: 0
+  animatorController: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  applyRotationFix: 0
+  rootName: Floor
+  bones:
+  - BoneID: 0
+    target: Root
+  - BoneID: 1
+    target: Spine01
+  - BoneID: 2
+    target: Spine02
+  - BoneID: 3
+    target: Chest
+  - BoneID: 4
+    target: Neck
+  - BoneID: 5
+    target: Head
+  - BoneID: 6
+    target: Scapula_L
+  - BoneID: 7
+    target: Shoulder_L
+  - BoneID: 8
+    target: Elbow_L
+  - BoneID: 9
+    target: Wrist_L
+  - BoneID: 10
+    target: Scapula_R
+  - BoneID: 11
+    target: Shoulder_R
+  - BoneID: 12
+    target: Elbow_R
+  - BoneID: 13
+    target: Wrist_R
+  - BoneID: 14
+    target: Hip_L
+  - BoneID: 15
+    target: Knee_L
+  - BoneID: 16
+    target: Ankle_L
+  - BoneID: 17
+    target: Toes_L
+  - BoneID: 18
+    target: Hip_R
+  - BoneID: 19
+    target: Knee_R
+  - BoneID: 20
+    target: Ankle_R
+  - BoneID: 21
+    target: Toes_R
+  boneFixes:
+  - transformName: thigh_twist.l
+    fixType: 2
+    xOffset: 0
+    yOffset: 0
+    zOffset: 0
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: thigh_twist.r
+    fixType: 2
+    xOffset: 0
+    yOffset: 0
+    zOffset: 0
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: leg_twist.l
+    fixType: 2
+    xOffset: 0
+    yOffset: 0
+    zOffset: 0
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: leg_twist.r
+    fixType: 2
+    xOffset: 0
+    yOffset: 0
+    zOffset: 0
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: shoulder.l
+    fixType: 2
+    xOffset: -90
+    yOffset: 0
+    zOffset: 90
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: shoulder.r
+    fixType: 2
+    xOffset: -90
+    yOffset: 0
+    zOffset: -90
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: hand.l
+    fixType: 2
+    xOffset: 0
+    yOffset: -90
+    zOffset: 0
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: hand.r
+    fixType: 2
+    xOffset: 0
+    yOffset: 90
+    zOffset: 0
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: toes_01.l
+    fixType: 2
+    xOffset: 45
+    yOffset: 90
+    zOffset: 180
+    OriginalRotation: {x: 0, y: 0, z: 0}
+  - transformName: toes_01.r
+    fixType: 2
+    xOffset: 45
+    yOffset: 90
+    zOffset: 180
+    OriginalRotation: {x: 0, y: 0, z: 0}
