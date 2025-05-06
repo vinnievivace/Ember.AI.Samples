@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec93b1e71964feab3f0d4981f8815ad, type: 3}
   m_Name: Default Character Settings
   m_EditorClassIdentifier: 
-  walkSpeed: 3
+  walkSpeed: 2
   runSpeed: 6
   crouchSpeed: 1.5
+  rotationSpeed: 720
   canJump: 1
-  jumpForce: 7
+  jumpForce: 10
   gravity: -9.81
-  canCrouch: 1
+  canCrouch: 0
   crouchHeight: 1
+  animatorController: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  useRootMotion: 1
