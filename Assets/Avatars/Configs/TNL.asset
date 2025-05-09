@@ -10,62 +10,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2fe1e05ad74ca2a9696ca04dd0c2e8, type: 3}
-  m_Name: WalkerGenesis
+  m_Name: TNL
   m_EditorClassIdentifier: 
-  nameHint: WalkerGenesis
-  rootName: Floor
-  rotationOffset: {x: 0, y: 0, z: 0}
+  nameHint: TNL
+  rootName: Rig
+  rotationOffset: {x: 0, y: 0, z: 0, w: 1}
   yOffset: 0.6
   BoneMapping:
   - BoneID: 0
-    target: Root
+    target: root.x
   - BoneID: 1
-    target: Spine01
+    target: spine_01.x
   - BoneID: 2
-    target: Spine02
+    target: spine_02.x
   - BoneID: 3
-    target: Chest
+    target: spine_03.x
   - BoneID: 4
-    target: Neck
+    target: neck.x
   - BoneID: 5
-    target: Head
+    target: head.x
   - BoneID: 6
-    target: Scapula_L
+    target: shoulder.l
   - BoneID: 7
-    target: Shoulder_L
+    target: arm_stretch.l
   - BoneID: 8
-    target: Elbow_L
+    target: forearm_stretch.l
   - BoneID: 9
-    target: Wrist_L
+    target: hand.l
   - BoneID: 10
-    target: Scapula_R
+    target: shoulder.r
   - BoneID: 11
-    target: Shoulder_R
+    target: arm_stretch.r
   - BoneID: 12
-    target: Elbow_R
+    target: forearm_stretch.r
   - BoneID: 13
-    target: Wrist_R
+    target: hand.r
   - BoneID: 14
-    target: Hip_L
+    target: thigh_stretch.l
   - BoneID: 15
-    target: Knee_L
+    target: leg_stretch.l
   - BoneID: 16
-    target: Ankle_L
+    target: foot.l
   - BoneID: 17
-    target: Toes_L
+    target: toes_01.l
   - BoneID: 18
-    target: Hip_R
+    target: thigh_stretch.r
   - BoneID: 19
-    target: Knee_R
+    target: leg_stretch.r
   - BoneID: 20
-    target: Ankle_R
+    target: foot.r
   - BoneID: 21
-    target: Toes_R
+    target: toes_01.r
   BoneReparenting: []
-  BoneRotations:
-  - BoneID: 7
-    rotation: {x: -60, y: 0, z: -90}
-  - BoneID: 11
-    rotation: {x: -60, y: 0, z: -90}
-  - BoneID: 8
-    rotation: {x: -45, y: 45, z: 45}
+  BoneRotations: []
+  ignoreCache: 0

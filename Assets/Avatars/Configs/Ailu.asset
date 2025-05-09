@@ -10,57 +10,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2fe1e05ad74ca2a9696ca04dd0c2e8, type: 3}
-  m_Name: AlteredState
+  m_Name: Ailu
   m_EditorClassIdentifier: 
-  nameHint: AlteredState
-  rootName: Rig
+  nameHint: Ailu
+  rootName: Skeleton_Grp
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
-  yOffset: 0.6
+  yOffset: 0
   BoneMapping:
   - BoneID: 0
-    target: root.x
+    target: mixamorig:Hips
   - BoneID: 1
-    target: spine_01.x
+    target: mixamorig:Spine
   - BoneID: 2
-    target: spine_02.x
+    target: mixamorig:Spine1
   - BoneID: 3
-    target: spine_03.x
+    target: mixamorig:Spine2
   - BoneID: 4
-    target: neck.x
+    target: mixamorig:Neck
   - BoneID: 5
-    target: head.x
+    target: mixamorig:Head
   - BoneID: 6
-    target: shoulder.l
+    target: mixamorig:LeftShoulder
   - BoneID: 7
-    target: arm_stretch.l
+    target: mixamorig:LeftArm
   - BoneID: 8
-    target: forearm_stretch.l
+    target: mixamorig:LeftForeArm
   - BoneID: 9
-    target: hand.l
+    target: mixamorig:LeftHand
   - BoneID: 10
-    target: shoulder.r
+    target: mixamorig:RightShoulder
   - BoneID: 11
-    target: arm_stretch.r
+    target: mixamorig:RightArm
   - BoneID: 12
-    target: forearm_stretch.r
+    target: mixamorig:RightForeArm
   - BoneID: 13
-    target: hand.r
+    target: mixamorig:RightHand
   - BoneID: 14
-    target: thigh_stretch.l
+    target: mixamorig:LeftUpLeg
   - BoneID: 15
-    target: leg_stretch.l
+    target: mixamorig:LeftLeg
   - BoneID: 16
-    target: foot.l
+    target: mixamorig:LeftFoot
   - BoneID: 17
-    target: toes_01.l
+    target: mixamorig:LeftToe
   - BoneID: 18
-    target: thigh_stretch.r
+    target: mixamorig:RightUpLeg
   - BoneID: 19
-    target: leg_stretch.r
+    target: mixamorig:RightLeg
   - BoneID: 20
-    target: foot.r
+    target: mixamorig:RightFoot
   - BoneID: 21
-    target: toes_01.r
+    target: mixamorig:RightToe
   BoneReparenting: []
   BoneRotations: []
-  ignoreCache: 0

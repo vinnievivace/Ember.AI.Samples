@@ -10,62 +10,56 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2fe1e05ad74ca2a9696ca04dd0c2e8, type: 3}
-  m_Name: WalkerGenesis
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  nameHint: WalkerGenesis
-  rootName: Floor
-  rotationOffset: {x: 0, y: 0, z: 0}
-  yOffset: 0.6
+  nameHint: goblin
+  rootName: BoneRoot
+  rotationOffset: {x: -90, y: 0, z: 0}
+  yOffset: -0.3
   BoneMapping:
   - BoneID: 0
-    target: Root
+    target: Hip
   - BoneID: 1
-    target: Spine01
+    target: Waist
   - BoneID: 2
-    target: Spine02
+    target: Spine01
   - BoneID: 3
-    target: Chest
+    target: Spine02
   - BoneID: 4
-    target: Neck
+    target: NeckTwist01
   - BoneID: 5
     target: Head
   - BoneID: 6
-    target: Scapula_L
+    target: L_Clavicle
   - BoneID: 7
-    target: Shoulder_L
+    target: L_Upperarm
   - BoneID: 8
-    target: Elbow_L
+    target: L_Forearm
   - BoneID: 9
-    target: Wrist_L
+    target: L_Hand
   - BoneID: 10
-    target: Scapula_R
+    target: R_Clavicle
   - BoneID: 11
-    target: Shoulder_R
+    target: R_Upperarm
   - BoneID: 12
-    target: Elbow_R
+    target: R_Forearm
   - BoneID: 13
-    target: Wrist_R
+    target: R_Hand
   - BoneID: 14
-    target: Hip_L
+    target: L_Thigh
   - BoneID: 15
-    target: Knee_L
+    target: L_Calf
   - BoneID: 16
-    target: Ankle_L
+    target: L_Foot
   - BoneID: 17
-    target: Toes_L
+    target: L_ToeBase
   - BoneID: 18
-    target: Hip_R
+    target: R_Thigh
   - BoneID: 19
-    target: Knee_R
+    target: R_Calf
   - BoneID: 20
-    target: Ankle_R
+    target: R_Foot
   - BoneID: 21
-    target: Toes_R
+    target: R_ToeBase
   BoneReparenting: []
-  BoneRotations:
-  - BoneID: 7
-    rotation: {x: -60, y: 0, z: -90}
-  - BoneID: 11
-    rotation: {x: -60, y: 0, z: -90}
-  - BoneID: 8
-    rotation: {x: -45, y: 45, z: 45}
+  BoneRotations: []

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2fe1e05ad74ca2a9696ca04dd0c2e8, type: 3}
-  m_Name: AlteredState
+  m_Name: Fluf
   m_EditorClassIdentifier: 
-  nameHint: AlteredState
-  rootName: Rig
+  nameHint: Fluf
+  rootName: rig
   rotationOffset: {x: 0, y: 0, z: 0, w: 1}
-  yOffset: 0.6
+  yOffset: 0.2
   BoneMapping:
   - BoneID: 0
     target: root.x
@@ -61,6 +61,48 @@ MonoBehaviour:
     target: foot.r
   - BoneID: 21
     target: toes_01.r
-  BoneReparenting: []
-  BoneRotations: []
+  BoneReparenting:
+  - boneName: thigh_stretch.l
+    parentName: root.x
+  - boneName: thigh_stretch.r
+    parentName: root.x
+  - boneName: leg_stretch.l
+    parentName: thigh_stretch.l
+  - boneName: leg_stretch.r
+    parentName: thigh_stretch.r
+  - boneName: foot.l
+    parentName: leg_twist.l
+  - boneName: foot.r
+    parentName: leg_twist.r
+  - boneName: spine_01.x
+    parentName: root.x
+  - boneName: spine_02.x
+    parentName: spine_01.x
+  - boneName: spine_03.x
+    parentName: spine_02.x
+  - boneName: neck.x
+    parentName: spine_03.x
+  - boneName: head.x
+    parentName: neck.x
+  - boneName: shoulder.l
+    parentName: spine_01.x
+  - boneName: shoulder.r
+    parentName: spine_01.x
+  - boneName: arm_stretch.l
+    parentName: shoulder.l
+  - boneName: arm_stretch.r
+    parentName: shoulder.r
+  - boneName: forearm_stretch.l
+    parentName: arm_stretch.l
+  - boneName: forearm_stretch.r
+    parentName: arm_stretch.r
+  - boneName: hand.l
+    parentName: forearm_stretch.l
+  - boneName: hand.r
+    parentName: forearm_stretch.r
+  - boneName: c_tail_00.x
+    parentName: spine_01.x
+  BoneRotations:
+  - BoneID: 0
+    rotation: {x: 0, y: 0, z: 0}
   ignoreCache: 0
