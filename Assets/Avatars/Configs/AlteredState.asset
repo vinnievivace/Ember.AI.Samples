@@ -13,9 +13,29 @@ MonoBehaviour:
   m_Name: AlteredState
   m_EditorClassIdentifier: 
   nameHint: AlteredState
+  footstep: {fileID: 8300000, guid: a2560fed137cc45e3993927e71e4fb87, type: 3}
+  footstepAlt: {fileID: 8300000, guid: e28f34325efd146ef8f3e02e77af5983, type: 3}
+  landJump: {fileID: 8300000, guid: f7f795dfbeda24e45be80b455ad62785, type: 3}
+  idle: {fileID: 0}
+  walk: {fileID: 0}
+  run: {fileID: 0}
+  jumpStart: {fileID: 0}
+  jumpLand: {fileID: 0}
+  jumpLandWalk: {fileID: 0}
+  jumpLandRun: {fileID: 0}
+  inAir: {fileID: 0}
   rootName: Rig
-  rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  rotationOffset: {x: 0, y: 0, z: 0}
   yOffset: 0.6
+  armStretch: 0
+  legStretch: 0
+  upperArmTwist: 0
+  lowerArmTwist: 0
+  upperLegTwist: 0
+  lowerLegTwist: 0
+  feetSpacing: 0
+  hasTranslationDoF: 0
+  shoulderXOffset: 0.25
   BoneMapping:
   - BoneID: 0
     target: root.x
@@ -62,5 +82,70 @@ MonoBehaviour:
   - BoneID: 21
     target: toes_01.r
   BoneReparenting: []
-  BoneRotations: []
-  ignoreCache: 0
+  BoneRotations:
+  - BoneID: 0
+    rotation: {x: -0.000003413658, y: 0.013812467, z: -1.718856e-10}
+    originalRotation: {x: -0.000003413658, y: 0.013812467, z: -1.718856e-10}
+  - BoneID: 1
+    rotation: {x: 356.79977, y: 0.55210024, z: 0.16587472}
+    originalRotation: {x: 356.79977, y: 0.55210024, z: 0.16587472}
+  - BoneID: 2
+    rotation: {x: 10.366934, y: 359.62497, z: 0.036176946}
+    originalRotation: {x: 10.366934, y: 359.62497, z: 0.036176946}
+  - BoneID: 3
+    rotation: {x: 2.3755953, y: 0.00018397676, z: 0.008204395}
+    originalRotation: {x: 2.3755953, y: 0.00018397676, z: 0.008204395}
+  - BoneID: 4
+    rotation: {x: 0.97231877, y: 358.99524, z: 359.79184}
+    originalRotation: {x: 0.97231877, y: 358.99524, z: 359.79184}
+  - BoneID: 5
+    rotation: {x: 349.4807, y: 0.774728, z: -0.0007239271}
+    originalRotation: {x: 349.4807, y: 0.774728, z: -0.0007239271}
+  - BoneID: 6
+    rotation: {x: 256.5, y: 178.62315, z: 271.16275}
+    originalRotation: {x: 279.65656, y: 178.62315, z: 271.16275}
+  - BoneID: 7
+    rotation: {x: 355.5, y: 50.609756, z: 1.2585123}
+    originalRotation: {x: 348.73434, y: 50.609756, z: 1.2585123}
+  - BoneID: 8
+    rotation: {x: -0.0000029569417, y: 0.030079573, z: 12.949961}
+    originalRotation: {x: -0.0000029569417, y: 0.030079573, z: 12.949961}
+  - BoneID: 9
+    rotation: {x: 7.817996, y: 305.23517, z: 356.39606}
+    originalRotation: {x: 7.817996, y: 305.23517, z: 356.39606}
+  - BoneID: 10
+    rotation: {x: 279.65652, y: 178.62317, z: 91.16276}
+    originalRotation: {x: 279.65652, y: 178.62317, z: 91.16276}
+  - BoneID: 11
+    rotation: {x: 348.73416, y: 309.38095, z: 358.74332}
+    originalRotation: {x: 348.73416, y: 309.38095, z: 358.74332}
+  - BoneID: 12
+    rotation: {x: 0.0019154621, y: 359.98737, z: 347.05005}
+    originalRotation: {x: 0.0019154621, y: 359.98737, z: 347.05005}
+  - BoneID: 13
+    rotation: {x: 7.8179917, y: 54.75625, z: 3.60394}
+    originalRotation: {x: 7.8179917, y: 54.75625, z: 3.60394}
+  - BoneID: 14
+    rotation: {x: 356.45978, y: 252.67494, z: 202.45155}
+    originalRotation: {x: 356.45978, y: 252.67494, z: 202.45155}
+  - BoneID: 15
+    rotation: {x: 359.9897, y: 359.9592, z: 320.5038}
+    originalRotation: {x: 359.9897, y: 359.9592, z: 320.5038}
+  - BoneID: 16
+    rotation: {x: 78.085724, y: 289.5428, z: 19.27568}
+    originalRotation: {x: 78.085724, y: 289.5428, z: 19.27568}
+  - BoneID: 17
+    rotation: {x: 353.03305, y: 179.95715, z: 0.005183285}
+    originalRotation: {x: 353.03305, y: 179.95715, z: 0.005183285}
+  - BoneID: 18
+    rotation: {x: 356.4596, y: 107.297005, z: 157.54848}
+    originalRotation: {x: 356.4596, y: 107.297005, z: 157.54848}
+  - BoneID: 19
+    rotation: {x: 0.011500366, y: 0.013862606, z: 39.4962}
+    originalRotation: {x: 0.011500366, y: 0.013862606, z: 39.4962}
+  - BoneID: 20
+    rotation: {x: 78.085724, y: 70.4914, z: 340.72418}
+    originalRotation: {x: 78.085724, y: 70.4914, z: 340.72418}
+  - BoneID: 21
+    rotation: {x: 353.03305, y: 180.04158, z: -0.0050207353}
+    originalRotation: {x: 353.03305, y: 180.04158, z: -0.0050207353}

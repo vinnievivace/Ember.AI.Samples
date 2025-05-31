@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameHint: Fluf
   rootName: rig
-  rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  rotationOffset: {x: 0, y: 0, z: 0}
   yOffset: 0.2
   BoneMapping:
   - BoneID: 0
@@ -103,6 +103,14 @@ MonoBehaviour:
   - boneName: c_tail_00.x
     parentName: spine_01.x
   BoneRotations:
-  - BoneID: 0
-    rotation: {x: 0, y: 0, z: 0}
-  ignoreCache: 0
+  - BoneID: 12
+    rotation: {x: 90, y: 90, z: 90}
+  armStretch: 0.05
+  legStretch: 0.05
+  upperArmTwist: 0.5
+  lowerArmTwist: 0.5
+  upperLegTwist: 0.5
+  lowerLegTwist: 0.5
+  feetSpacing: 0
+  hasTranslationDoF: 0
+  shoulderRollOffset: {x: 0, y: 0, z: 0}

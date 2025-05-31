@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using EmberAI;
 using EmberAI.Attributes;
+using EmberAI.Attributes.EmberAI.Attributes;
 using EmberAI.Avatars;
 using EmberAI.Core;
 using EmberAI.Futureverse.AssetRegistry;
@@ -58,6 +59,12 @@ public class SamplesUI : EmberBehaviour
 
     #region Inspector ..............................................................................................
 
+    [ButtonGroup("Collections", "Load Goblins")]
+    private void LoadGoblins()
+    {
+        AssetRegistryManager.Instance.GetAssets(AssetRegistryManager.GoblinCollectionID);
+    }
+    
     #endregion
 
     #region Initialization .........................................................................................
@@ -72,7 +79,7 @@ public class SamplesUI : EmberBehaviour
     {
         base.OnAwake();
     
-        urlInput.text = "https://ember-sdk.com/Samples/GLB/WalkerGenesis/6006.gltf";
+        SetHeaderText("Logging in to FuturePass...");
         
         
     }
@@ -146,6 +153,8 @@ public class SamplesUI : EmberBehaviour
     
     private void OnLoggedIn()
     {
+        SetHeaderText("Retrieving FuturePass Assets...");
+        
         AssetRegistryManager.Instance.GetAssets(AssetRegistryManager.AlteredStateCollectionID);
     }
     
@@ -157,6 +166,8 @@ public class SamplesUI : EmberBehaviour
         {
             _thumbnailSelector.AddItem(asset.TokenID, asset.ImagePath);
         }
+        
+        SetHeaderText("Assets Loaded", 5);
     }
     
     private void ThumbnailSelectorOnOnItemClicked(string tokenID)

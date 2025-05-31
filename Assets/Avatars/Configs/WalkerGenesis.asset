@@ -64,8 +64,77 @@ MonoBehaviour:
   BoneReparenting: []
   BoneRotations:
   - BoneID: 7
-    rotation: {x: -60, y: 0, z: -90}
+    rotation: {x: 40.99188, y: 23.182974, z: 30.640755}
+    originalRotation: {x: 40.99188, y: 23.182974, z: 30.640755}
   - BoneID: 11
-    rotation: {x: -60, y: 0, z: -90}
+    rotation: {x: 30.470003, y: 30.535608, z: 15.559144}
+    originalRotation: {x: 30.470003, y: 30.535608, z: 15.559144}
   - BoneID: 8
-    rotation: {x: -45, y: 45, z: 45}
+    rotation: {x: -0.0006298683, y: 0.00021045435, z: 334.2164}
+    originalRotation: {x: -0.0006298683, y: 0.00021045435, z: 334.2164}
+  - BoneID: 0
+    rotation: {x: 354.24268, y: 6.8043385, z: 2.8564758}
+    originalRotation: {x: 354.24268, y: 6.8043385, z: 2.8564758}
+  - BoneID: 1
+    rotation: {x: 4.0739236, y: 356.85352, z: 357.53445}
+    originalRotation: {x: 4.0739236, y: 356.85352, z: 357.53445}
+  - BoneID: 2
+    rotation: {x: 1.152288, y: 359.69226, z: 358.43442}
+    originalRotation: {x: 1.152288, y: 359.69226, z: 358.43442}
+  - BoneID: 3
+    rotation: {x: 1.1264018, y: 359.67023, z: 358.43057}
+    originalRotation: {x: 1.1264018, y: 359.67023, z: 358.43057}
+  - BoneID: 4
+    rotation: {x: 6.7960944, y: 0.07952234, z: 359.55472}
+    originalRotation: {x: 6.7960944, y: 0.07952234, z: 359.55472}
+  - BoneID: 5
+    rotation: {x: 352.43884, y: 358.6122, z: 0.2632041}
+    originalRotation: {x: 352.43884, y: 358.6122, z: 0.2632041}
+  - BoneID: 6
+    rotation: {x: 54, y: 108, z: 181}
+    originalRotation: {x: 54.88418, y: 108.28632, z: 181.8668}
+  - BoneID: 9
+    rotation: {x: 351.4592, y: 358.8094, z: 9.160404}
+    originalRotation: {x: 351.4592, y: 358.8094, z: 9.160404}
+  - BoneID: 10
+    rotation: {x: 52.536564, y: 253.76099, z: 177.87582}
+    originalRotation: {x: 52.536564, y: 253.76099, z: 177.87582}
+  - BoneID: 12
+    rotation: {x: -0.0003140385, y: -0.00002738351, z: 12.260331}
+    originalRotation: {x: -0.0003140385, y: -0.00002738351, z: 12.260331}
+  - BoneID: 13
+    rotation: {x: 345.07004, y: 332.20868, z: 352.5306}
+    originalRotation: {x: 345.07004, y: 332.20868, z: 352.5306}
+  - BoneID: 14
+    rotation: {x: 351.85303, y: 359.92667, z: 169.0451}
+    originalRotation: {x: 351.85303, y: 359.92667, z: 169.0451}
+  - BoneID: 15
+    rotation: {x: 344.60394, y: -0.0000019771685, z: 0.000010301788}
+    originalRotation: {x: 344.60394, y: -0.0000019771685, z: 0.000010301788}
+  - BoneID: 16
+    rotation: {x: 42.517067, y: 29.942333, z: 10.256991}
+    originalRotation: {x: 42.517067, y: 29.942333, z: 10.256991}
+  - BoneID: 17
+    rotation: {x: 22.522688, y: 359.22424, z: 3.4986043}
+    originalRotation: {x: 22.522688, y: 359.22424, z: 3.4986043}
+  - BoneID: 18
+    rotation: {x: 359.75473, y: 349.5953, z: 177.76358}
+    originalRotation: {x: 359.75473, y: 349.5953, z: 177.76358}
+  - BoneID: 19
+    rotation: {x: 349.43094, y: -0.0000010597048, z: -0.000013354575}
+    originalRotation: {x: 349.43094, y: -0.0000010597048, z: -0.000013354575}
+  - BoneID: 20
+    rotation: {x: 55.152924, y: 356.469, z: 3.1029375}
+    originalRotation: {x: 55.152924, y: 356.469, z: 3.1029375}
+  - BoneID: 21
+    rotation: {x: 1.0214967, y: 350.2715, z: 359.11136}
+    originalRotation: {x: 1.0214967, y: 350.2715, z: 359.11136}
+  armStretch: 0.05
+  legStretch: 0.05
+  upperArmTwist: 0.5
+  lowerArmTwist: 0.5
+  upperLegTwist: 0.5
+  lowerLegTwist: 0.5
+  feetSpacing: 0
+  hasTranslationDoF: 0
+  shoulderRollOffset: {x: 0, y: 0, z: 0}

@@ -12,14 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec93b1e71964feab3f0d4981f8815ad, type: 3}
   m_Name: Default Character Settings
   m_EditorClassIdentifier: 
+  updateType: 2
   walkSpeed: 2
   runSpeed: 6
   crouchSpeed: 1.5
   rotationSpeed: 720
+  keyboardMappingInfo: 'NOTE: Keyboard Mappings assigned on KeyboardMouseInput Component'
   canJump: 1
   jumpForce: 10
-  gravity: -9.81
-  canCrouch: 0
+  gravity: -10
+  canCrouch: 1
   crouchHeight: 1
-  animatorController: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  animatorController: {fileID: 9100000, guid: 6e0758f6861fb467f87e847331ba710d, type: 2}
   useRootMotion: 1
+  idleAnimationSpeed: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundStick: 2

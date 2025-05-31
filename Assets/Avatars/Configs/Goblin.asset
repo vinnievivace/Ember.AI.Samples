@@ -13,9 +13,20 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   nameHint: goblin
+  footstep: {fileID: 0}
+  footstepAlt: {fileID: 0}
+  landJump: {fileID: 0}
+  idle: {fileID: 0}
+  walk: {fileID: 0}
+  run: {fileID: 0}
+  jumpStart: {fileID: 0}
+  jumpLand: {fileID: 0}
+  jumpLandWalk: {fileID: 0}
+  jumpLandRun: {fileID: 0}
+  inAir: {fileID: 0}
   rootName: BoneRoot
   rotationOffset: {x: -90, y: 0, z: 0}
-  yOffset: -0.3
+  yOffset: 0
   BoneMapping:
   - BoneID: 0
     target: Hip
@@ -62,4 +73,79 @@ MonoBehaviour:
   - BoneID: 21
     target: R_ToeBase
   BoneReparenting: []
-  BoneRotations: []
+  BoneRotations:
+  - BoneID: 0
+    rotation: {x: 89.98022, y: 0, z: 0}
+    originalRotation: {x: 89.98022, y: 0, z: 0}
+  - BoneID: 1
+    rotation: {x: 15.083556, y: 0.0005648994, z: 0.026496973}
+    originalRotation: {x: 15.083556, y: 0.0005648994, z: 0.026496973}
+  - BoneID: 2
+    rotation: {x: 333.50107, y: 0.005019566, z: 359.98718}
+    originalRotation: {x: 333.50107, y: 0.005019566, z: 359.98718}
+  - BoneID: 3
+    rotation: {x: 359.8075, y: 0.006213903, z: 0.012183524}
+    originalRotation: {x: 359.8075, y: 0.006213903, z: 0.012183524}
+  - BoneID: 4
+    rotation: {x: 31.045805, y: 359.98492, z: 0.11491397}
+    originalRotation: {x: 31.045805, y: 359.98492, z: 0.11491397}
+  - BoneID: 5
+    rotation: {x: 340.75183, y: 359.9929, z: 0.0031662597}
+    originalRotation: {x: 340.75183, y: 359.9929, z: 0.0031662597}
+  - BoneID: 6
+    rotation: {x: 6.87, y: 340, z: 94}
+    originalRotation: {x: 6.8724985, y: 340.90112, z: 94.201744}
+  - BoneID: 7
+    rotation: {x: 17.8, y: 45, z: 22}
+    originalRotation: {x: 17.845917, y: 353.0404, z: 22.40455}
+  - BoneID: 8
+    rotation: {x: 2, y: -9, z: 45}
+    originalRotation: {x: 1.9869627, y: -0.000009132554, z: -0.0000027624883}
+  - BoneID: 9
+    rotation: {x: 353.36633, y: 358.0433, z: 358.1482}
+    originalRotation: {x: 353.36633, y: 358.0433, z: 358.1482}
+  - BoneID: 10
+    rotation: {x: 6.88915, y: 19.094282, z: 265.74982}
+    originalRotation: {x: 6.88915, y: 19.094282, z: 265.74982}
+  - BoneID: 11
+    rotation: {x: 17.845922, y: 6.959608, z: 337.59546}
+    originalRotation: {x: 17.845922, y: 6.959608, z: 337.59546}
+  - BoneID: 12
+    rotation: {x: 1.9869618, y: 0.000007516755, z: 0.000006172805}
+    originalRotation: {x: 1.9869618, y: 0.000007516755, z: 0.000006172805}
+  - BoneID: 13
+    rotation: {x: 353.36633, y: 1.9566991, z: 1.8518001}
+    originalRotation: {x: 353.36633, y: 1.9566991, z: 1.8518001}
+  - BoneID: 14
+    rotation: {x: 341.57642, y: 359.9247, z: 180.96829}
+    originalRotation: {x: 341.57642, y: 359.9247, z: 180.96829}
+  - BoneID: 15
+    rotation: {x: 350.72153, y: -0.0000027259007, z: -0.00000039814648}
+    originalRotation: {x: 350.72153, y: -0.0000027259007, z: -0.00000039814648}
+  - BoneID: 16
+    rotation: {x: 57.218018, y: 64.83239, z: 54.043983}
+    originalRotation: {x: 57.218018, y: 64.83239, z: 54.043983}
+  - BoneID: 17
+    rotation: {x: 17.607426, y: 329.89413, z: 1.0251826}
+    originalRotation: {x: 17.607426, y: 329.89413, z: 1.0251826}
+  - BoneID: 18
+    rotation: {x: 341.57635, y: 0.0482975, z: 179.10925}
+    originalRotation: {x: 341.57635, y: 0.0482975, z: 179.10925}
+  - BoneID: 19
+    rotation: {x: 350.72156, y: 0.0000000056364295, z: 0.00000055938835}
+    originalRotation: {x: 350.72156, y: 0.0000000056364295, z: 0.00000055938835}
+  - BoneID: 20
+    rotation: {x: 57.21797, y: 295.1677, z: 305.95612}
+    originalRotation: {x: 57.21797, y: 295.1677, z: 305.95612}
+  - BoneID: 21
+    rotation: {x: 17.60744, y: 30.105862, z: 358.97482}
+    originalRotation: {x: 17.60744, y: 30.105862, z: 358.97482}
+  armStretch: 0.05
+  legStretch: 0.05
+  upperArmTwist: 0.5
+  lowerArmTwist: 0.5
+  upperLegTwist: 0.7
+  lowerLegTwist: 1
+  feetSpacing: 0
+  hasTranslationDoF: 0
+  shoulderRollOffset: {x: 0, y: 0, z: 0}
