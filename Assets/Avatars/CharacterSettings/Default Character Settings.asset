@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec93b1e71964feab3f0d4981f8815ad, type: 3}
   m_Name: Default Character Settings
   m_EditorClassIdentifier: 
-  updateType: 2
+  updateMode: 1
   walkSpeed: 2
   runSpeed: 6
   crouchSpeed: 1.5
   rotationSpeed: 720
+  accelerationSpeed: 15
+  decelerationTime: 0.5
   keyboardMappingInfo: 'NOTE: Keyboard Mappings assigned on KeyboardMouseInput Component'
   canJump: 1
   jumpForce: 10
