@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f6ee316c324307bfadcddf0e889cd1, type: 3}
   m_Name: ThirdPersonCameraSettings
   m_EditorClassIdentifier: 
-  updateMode: 2
+  updateMode: 1
   lockCursor: 0
   mouseZoomSmoothness: 0.5
   mouseRotateSmoothness: 0.5
@@ -33,14 +33,14 @@ MonoBehaviour:
   rotationSpeed: 5
   rotationDuration: 1
   nonMouseRotationModifier: 0.01
-  distance: 10
+  defaultDistance: 4
   minDistance: 4
   maxDistance: 10
   zoomSpeed: 5
-  blockingLayers:
+  BlockingLayers:
     serializedVersion: 2
-    m_Bits: 0
-  blockingRadius: 1
-  blockingSmoothTime: 0.1
-  blockingOriginOffset: 0
-  blockedOffset: 0.5
+    m_Bits: 8
+  blockingDetectionRadius: 0.5
+  normalFOV: 60
+  blockedFOV: 75
+  FOVSmoothTime: 0.2

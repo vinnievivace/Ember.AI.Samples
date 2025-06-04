@@ -10,12 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a686aceae5a4424989ebd1b7982caef, type: 3}
-  m_Name: HDEnvironmentSettings
+  m_Name: EnvironmentSettings
   m_EditorClassIdentifier: 
-  sunIntensity: 80500
-  sunTemperature: 4893
-  avatarSpotIntensity: 46701
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  slopeLimit: 30
+  sunIntensity: 20000
+  sunTemperature: 5000
+  shadowStrength: 0.75
+  AvatarLightLayer:
+    serializedVersion: 0
+    m_Bits: 33
+  avatarSpotIntensity: 100000
+  avatarSpotTemperature: 10000
   avatarSpotWidth: 5
-  avatarSpotHeight: 5
+  avatarSpotHeight: 0.9
   avatarSpotDistance: 2
   avatarSpotYOffset: 0

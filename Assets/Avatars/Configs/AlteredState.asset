@@ -23,6 +23,7 @@ MonoBehaviour:
   jumpLand: {fileID: 0}
   jumpLandWalk: {fileID: 0}
   jumpLandRun: {fileID: 0}
+  crouch: {fileID: 0}
   inAir: {fileID: 0}
   rootName: Rig
   rotationOffset: {x: 0, y: 0, z: 0}
@@ -35,7 +36,7 @@ MonoBehaviour:
   lowerLegTwist: 0
   feetSpacing: 0
   hasTranslationDoF: 0
-  shoulderXOffset: 0.25
+  shoulderXOffset: 0
   BoneMapping:
   - BoneID: 0
     target: root.x

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cec93b1e71964feab3f0d4981f8815ad, type: 3}
-  m_Name: Default Character Settings
+  m_Name: Character Settings
   m_EditorClassIdentifier: 
   updateMode: 1
   walkSpeed: 2
