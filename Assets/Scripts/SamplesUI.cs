@@ -26,8 +26,24 @@ public class SamplesUI : EmberBehaviour
 
     private List<AssetItem> _assets;
     
+    private Vector2 _sidePanelOriginalPas, _bottomPanelOriginalPas;
+
+    private bool _panelsVisible;
+    
     private const string Blurb = "Modular framework providing tools for Metaverse / Blockchain / Extended Reality / AI experiences.";
 
+    [BoxGroup("Settings"), SerializeField] 
+    private Vector2 sidePanelHidePosition;
+    
+    [BoxGroup("Settings"), SerializeField] 
+    private Vector2 bottomPanelHidePosition;
+    
+    [BoxGroup("UI"), SerializeField] 
+    private RectTransform sidePanel;
+
+    [BoxGroup("UI"), SerializeField] 
+    private RectTransform bottomPanel;
+    
     [BoxGroup("UI"), SerializeField] 
     private ThumbnailSelector _thumbnailSelector;
     
@@ -41,6 +57,9 @@ public class SamplesUI : EmberBehaviour
 
     [BoxGroup("Components"), SerializeField]
     private GLBBehaviour _GLBTarget;
+
+    [BoxGroup("Components"), SerializeField]
+    private CharacterControllerSystem _characterController;
 
     [BoxGroup("Avatar Configs"), SerializeField]
     private List<AvatarConfig> avatarConfigs;
@@ -59,6 +78,18 @@ public class SamplesUI : EmberBehaviour
 
     #region Inspector ..............................................................................................
 
+    [ButtonGroup("Tests", "Show Panels")]
+    private void ShowPanels()
+    {
+        SetPanelsVisible(true);
+    }
+    
+    [ButtonGroup("Tests", "Hide Panels")]
+    private void HidePanels()
+    {
+        SetPanelsVisible(false);
+    }
+    
     [ButtonGroup("Collections", "Load Goblins")]
     private void LoadGoblins()
     {
@@ -80,7 +111,17 @@ public class SamplesUI : EmberBehaviour
         base.OnAwake();
     
         SetHeaderText("Logging in to FuturePass...");
+
+        _sidePanelOriginalPas = sidePanel.anchoredPosition;
+        _bottomPanelOriginalPas = bottomPanel.anchoredPosition;
         
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        SetPanelsVisible(!_characterController.HasInput);
         
     }
 
@@ -127,7 +168,33 @@ public class SamplesUI : EmberBehaviour
         
         if(resetTime > 0) CallbackManager.AddOneOff(this, resetTime, () => headerTXT.text = $"<color=white>{Blurb}</color>");
     }
-    
+
+    public void SetPanelsVisible(bool visible, bool tween = true)
+    {
+        if (visible)
+        {
+            SetPanelPosition(sidePanel, _sidePanelOriginalPas, tween);
+            SetPanelPosition(bottomPanel, _bottomPanelOriginalPas, tween);
+        }
+        else
+        {
+            SetPanelPosition(sidePanel, sidePanelHidePosition, tween);
+            SetPanelPosition(bottomPanel, bottomPanelHidePosition, tween);
+        }
+    }
+
+    private void SetPanelPosition(RectTransform panel, Vector2 position, bool tween = true)
+    {
+        if (tween)
+        {
+            TweenUtil.TweenVector2(panel.anchoredPosition, position, 0.5f, position => { panel.anchoredPosition = position;}, () => { });
+        }
+        else
+        {
+            panel.anchoredPosition = position;
+        }
+    }
+
     #endregion
 
     #region Event Handlers .........................................................................................

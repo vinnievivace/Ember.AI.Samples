@@ -23,7 +23,7 @@ MonoBehaviour:
     serializedVersion: 0
     m_Bits: 33
   avatarSpotIntensity: 100000
-  avatarSpotTemperature: 10000
+  avatarSpotTemperature: 5000
   avatarSpotWidth: 5
   avatarSpotHeight: 0.9
   avatarSpotDistance: 2
