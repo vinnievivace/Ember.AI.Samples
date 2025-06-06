@@ -1,12 +1,10 @@
 using System.Collections.Generic;
 using EmberAI;
 using EmberAI.Attributes;
-using EmberAI.Attributes.EmberAI.Attributes;
 using EmberAI.Avatars;
 using EmberAI.Core;
 using EmberAI.Core.Util;
 using EmberAI.Futureverse.AssetRegistry;
-using EmberAI.Futureverse.FuturePass;
 using EmberAI.UI;
 using TMPro;
 using UnityEngine;
@@ -15,202 +13,162 @@ namespace TASM
 {
     public class TASMUI : EmberBehaviour
     {
-        #region EVENTS /////////////////////////////////////////////////////////////////////////////////////////////////        
-
-        #endregion
-
-        #region ENUMS //////////////////////////////////////////////////////////////////////////////////////////////////
-
-        #endregion
-
         #region FIELDS /////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private List<AssetItem> _assets;
-        
-        private Vector2 _avatarPanelOriginalPos, _brainPanelOriginalPos;
-
-        private bool _panelsVisible;
-        
         private const string Blurb = "TASM. The Altered State Machine. You are not ready....";
 
         [BoxGroup("Settings"), SerializeField]
         private AvatarConfig avatarConfigs;
-        
-        [BoxGroup("Settings"), SerializeField] 
-        private Vector2 avatarPanelHidePosition, brainPanelHidePosition;
-        
-        [BoxGroup("UI"), SerializeField] 
+       
+        [BoxGroup("Settings"), SerializeField, Tooltip("Delay in seconds before toggling UI visible when no input is detected.")] 
+        private float showUIDelay = 3;
+
+        [BoxGroup("UI"), SerializeField]
         private ThumbnailSelector avatarSelector, brainSelector;
-        
-        [BoxGroup("UI"), SerializeField] 
+
+        [BoxGroup("UI"), SerializeField]
         private TextMeshProUGUI headerTXT;
-        
+
         [BoxGroup("Components"), SerializeField]
         private GLBBehaviour _GLBTarget;
 
         [BoxGroup("Components"), SerializeField]
         private CharacterControllerSystem _characterController;
-
         
-        
-        #endregion
-
-        #region PROPERTIES /////////////////////////////////////////////////////////////////////////////////////////////           
+        [BoxGroup("Debug"), ReadOnly, SerializeField]
+        private bool PanelsVisible;
 
         #endregion
 
-        #region METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
-
-        #region Static .................................................................................................
+        #region INSPECTOR TEST BUTTONS /////////////////////////////////////////////////////////////////////////////////
 
         #endregion
 
-        #region Inspector ..............................................................................................
-
-        [ButtonGroup("Tests", "Show Panels")]
-        private void ShowPanels()
-        {
-            SetPanelsVisible(true);
-        }
-        
-        [ButtonGroup("Tests", "Hide Panels")]
-        private void HidePanels()
-        {
-            SetPanelsVisible(false);
-        }
-        
-        #endregion
-
-        #region Initialization .........................................................................................
-
-        
-        
-        #endregion
-
-        #region MonoBehaviours .........................................................................................
+        #region MONOBEHAVIOURS /////////////////////////////////////////////////////////////////////////////////////////
 
         protected override void OnAwake()
         {
             base.OnAwake();
-        
-            SetHeaderText("Logging in to FuturePass...");
 
-            _avatarPanelOriginalPos = avatarSelector.RectTransform.anchoredPosition;
-            _brainPanelOriginalPos = brainSelector.RectTransform.anchoredPosition;
+            SetHeaderText("Logging in to FuturePass...");
         }
 
         protected override void OnUpdate()
         {
             base.OnUpdate();
-
-            SetPanelsVisible(!InputUtil.AnyCurrentInput());
             
+            bool shouldBeVisible = !InputUtil.AnyCurrentInput();
+            bool tweenVisibility = true;
+
+            if (ModalPopup.Instance.Active)
+            {
+                shouldBeVisible = false;
+                tweenVisibility = false;
+            } 
+
+            if (shouldBeVisible != PanelsVisible)
+            {
+                // when we have no input, apply a delay before toggling the UI visible.
+                if (shouldBeVisible)
+                {
+                    CallbackManager.AddOneOff(this, showUIDelay, () =>
+                    {
+                        avatarSelector.SetVisible(true);
+                        brainSelector.SetVisible(true);
+                    });
+                }
+                else
+                {
+                    avatarSelector.SetVisible(false, tweenVisibility);
+                    brainSelector.SetVisible(false, tweenVisibility);
+                }
+                
+                PanelsVisible = shouldBeVisible;
+            }
         }
 
         private void OnEnable()
         {
             _GLBTarget.OnLoadComplete += GLBTargetOnOnLoadComplete;
             _GLBTarget.OnLoadError += GLBTargetOnLoadOnLoadError;
-            
+
             avatarSelector.OnItemClicked += AvatarSelectorOnOnItemClicked;
-            
-            FPAuthManager.Instance.OnLoginComplete += OnLoggedIn;
-            AssetRegistryManager.Instance.OnAssetsLoaded += OnARAssetsLoaded;
+            brainSelector.OnItemClicked += BrainSelectorOnOnItemClicked;
         }
 
         private void OnDisable()
         {
             _GLBTarget.OnLoadComplete -= GLBTargetOnOnLoadComplete;
             _GLBTarget.OnLoadError -= GLBTargetOnLoadOnLoadError;
-            
-            //AssetRegistryManager.Instance.OnAssetsLoaded -= OnARAssetsLoaded;
+
+            avatarSelector.OnItemClicked -= AvatarSelectorOnOnItemClicked;
+            brainSelector.OnItemClicked -= BrainSelectorOnOnItemClicked;
         }
-        
+
         #endregion
 
-        #region General ................................................................................................
+        #region PANEL & UI LOGIC ///////////////////////////////////////////////////////////////////////////////////////
 
-        private void SetHeaderText(string message, int resetTime = 0)
+        public void SetHeaderText(string message, int resetTime = 0)
         {
             headerTXT.text = $"<b><color=yellow>{message}</color></b>";
-            
-            if(resetTime > 0) CallbackManager.AddOneOff(this, resetTime, () => headerTXT.text = $"<color=white>{Blurb}</color>");
+
+            if (resetTime > 0) CallbackManager.AddOneOff(this, resetTime, () => headerTXT.text = $"<color=white>{Blurb}</color>");
         }
 
-        
-        // move to ui behaviour
-        public void SetPanelsVisible(bool visible, bool tween = true)
+        public void PopulateAvatarSelector(List<AssetItem> avatars)
         {
-            if (visible)
+            foreach (AssetItem asset in avatars)
             {
-                SetPanelPosition(avatarSelector.RectTransform, _avatarPanelOriginalPos, tween);
-                SetPanelPosition(brainSelector.RectTransform, _brainPanelOriginalPos, tween);;
+                avatarSelector.AddItem(asset.TokenID, asset.ImagePath);
             }
-            else
-            {
-                SetPanelPosition(avatarSelector.RectTransform, avatarPanelHidePosition, tween);
-                SetPanelPosition(brainSelector.RectTransform, brainPanelHidePosition, tween);
-            }
+
+            SetHeaderText("Assets Loaded", 5);
         }
 
-        private void SetPanelPosition(RectTransform panel, Vector2 position, bool tween = true)
+        public void PopulateBrainSelector(List<AssetItem> brains)
         {
-            if (tween)
+            foreach (AssetItem asset in brains)
             {
-                TweenUtil.TweenVector2(panel.anchoredPosition, position, 0.5f, position => { panel.anchoredPosition = position;}, () => { });
+                brainSelector.AddItem(asset.TokenID, asset.TransparentImagePath);
             }
-            else
-            {
-                panel.anchoredPosition = position;
-            }
+
+            SetHeaderText("Assets Loaded", 5);
         }
 
         #endregion
 
-        #region Event Handlers .........................................................................................
+        #region EVENT HANDLERS /////////////////////////////////////////////////////////////////////////////////////////
 
         private void GLBTargetOnOnLoadComplete(string path)
         {
             SetHeaderText("Loaded", 1);
         }
-        
+
         private void GLBTargetOnLoadOnLoadError(string error)
         {
             SetHeaderText(error, 5);
         }
-        
-        private void OnLoggedIn()
-        {
-            SetHeaderText("Retrieving FuturePass Assets...");
-            
-            AssetRegistryManager.Instance.GetAssets(AssetRegistryManager.AlteredStateCollectionID);
-        }
-        
-        private void OnARAssetsLoaded(List<AssetItem> assets)
-        {
-            _assets = assets;
-            
-            foreach (AssetItem asset in assets)
-            {
-                avatarSelector.AddItem(asset.TokenID, asset.ImagePath);
-            }
-            
-            SetHeaderText("Assets Loaded", 5);
-        }
-        
+
         private void AvatarSelectorOnOnItemClicked(string tokenID)
         {
-            SetHeaderText("Loading...");
+            SetHeaderText("Loading Avatar " + tokenID + "...");
             
-            string selectedPath = _assets.Find(i => i.TokenID == tokenID).GLBPath;
-            
+            string selectedPath = TASMManager.Instance.Avatars.Find(i => i.TokenID == tokenID).GLBPath;
+
             _GLBTarget.avatarConfig = avatarConfigs;
             _GLBTarget.LoadGLB(selectedPath);
         }
         
-        #endregion
+        private void BrainSelectorOnOnItemClicked(string tokenID)
+        {
+            SetHeaderText("Loading Brain " + tokenID + "...");
+            
+            string selectedPath = TASMManager.Instance.Brains.Find(i => i.TokenID == tokenID).GLBPath;
+
+            Debug.Log(selectedPath);
+        }
 
         #endregion
-        
     }
 }

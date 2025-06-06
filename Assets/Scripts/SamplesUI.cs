@@ -227,7 +227,7 @@ public class SamplesUI : EmberBehaviour
         AssetRegistryManager.Instance.GetAssets(AssetRegistryManager.AlteredStateCollectionID);
     }
     
-    private void OnARAssetsLoaded(List<AssetItem> assets)
+    private void OnARAssetsLoaded(string collectionID, List<AssetItem> assets)
     {
         _assets = assets;
         

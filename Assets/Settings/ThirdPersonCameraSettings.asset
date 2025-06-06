@@ -33,7 +33,7 @@ MonoBehaviour:
   rotationSpeed: 5
   rotationDuration: 1
   nonMouseRotationModifier: 0.01
-  defaultDistance: 4
+  defaultDistance: 9.999995
   minDistance: 4
   maxDistance: 10
   zoomSpeed: 5
