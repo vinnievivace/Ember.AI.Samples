@@ -13,9 +13,30 @@ MonoBehaviour:
   m_Name: Ailu
   m_EditorClassIdentifier: 
   nameHint: Ailu
+  footstep: {fileID: 0}
+  footstepAlt: {fileID: 0}
+  landJump: {fileID: 0}
+  idle: {fileID: 0}
+  walk: {fileID: 0}
+  run: {fileID: 0}
+  jumpStart: {fileID: 0}
+  jumpLand: {fileID: 0}
+  jumpLandWalk: {fileID: 0}
+  jumpLandRun: {fileID: 0}
+  crouch: {fileID: 0}
+  inAir: {fileID: 0}
   rootName: Skeleton_Grp
-  rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  rotationOffset: {x: 0, y: 0, z: 0}
   yOffset: 0
+  armStretch: 0.05
+  legStretch: 0.05
+  upperArmTwist: 0.5
+  lowerArmTwist: 0.5
+  upperLegTwist: 0.7
+  lowerLegTwist: 1
+  feetSpacing: 0
+  hasTranslationDoF: 0
+  shoulderXOffset: 0
   BoneMapping:
   - BoneID: 0
     target: mixamorig:Hips
@@ -62,4 +83,8 @@ MonoBehaviour:
   - BoneID: 21
     target: mixamorig:RightToe
   BoneReparenting: []
-  BoneRotations: []
+  BoneRotations:
+  - BoneID: 7
+    offset: {x: 45, y: 0, z: 0}
+  - BoneID: 11
+    offset: {x: 45, y: 0, z: 0}

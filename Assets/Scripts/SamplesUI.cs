@@ -4,7 +4,9 @@ using EmberAI;
 using EmberAI.Attributes;
 using EmberAI.Attributes.EmberAI.Attributes;
 using EmberAI.Avatars;
+using EmberAI.Cameras;
 using EmberAI.Core;
+using EmberAI.Core.Util;
 using EmberAI.Futureverse.AssetRegistry;
 using EmberAI.Futureverse.FuturePass;
 using EmberAI.UI;
@@ -114,7 +116,9 @@ public class SamplesUI : EmberBehaviour
 
         _sidePanelOriginalPas = sidePanel.anchoredPosition;
         _bottomPanelOriginalPas = bottomPanel.anchoredPosition;
-        
+
+        urlInput.text = "file:///Users/vinnievivace/Documents/Ember/Ember-SDK.com%20uploads/Samples/GLB/Ailu/1229.glb";
+
     }
 
     protected override void OnUpdate()
@@ -145,7 +149,7 @@ public class SamplesUI : EmberBehaviour
         _GLBTarget.OnLoadComplete -= GLBTargetOnOnLoadComplete;
         _GLBTarget.OnLoadError -= GLBTargetOnLoadOnLoadError;
         
-        AssetRegistryManager.Instance.OnAssetsLoaded -= OnARAssetsLoaded;
+        //AssetRegistryManager.Instance.OnAssetsLoaded -= OnARAssetsLoaded;
     }
     
     #endregion
