@@ -76,3 +76,4 @@ crashlytics-build.properties
 Packages/packages-lock.json
 *.idea
 Assets/- GIT Ignore*
+mono_crash*
