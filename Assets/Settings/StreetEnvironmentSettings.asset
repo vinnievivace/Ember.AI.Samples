@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a686aceae5a4424989ebd1b7982caef, type: 3}
+  m_Name: StreetEnvironmentSettings
+  m_EditorClassIdentifier: 
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  slopeLimit: 30
+  sunIntensity: 220
+  sunTemperature: 132
+  shadowStrength: 1
+  AvatarLightLayer:
+    serializedVersion: 0
+    m_Bits: 33
+  avatarSpotIntensity: 2076
+  avatarSpotTemperature: 5000
+  avatarSpotWidth: 5
+  avatarSpotHeight: 7.23
+  avatarSpotDistance: 37.83
+  avatarSpotYOffset: 0

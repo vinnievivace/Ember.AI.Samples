@@ -1,253 +1,192 @@
-using System;
 using System.Collections.Generic;
-using EmberAI;
 using EmberAI.Attributes;
-using EmberAI.Attributes.EmberAI.Attributes;
 using EmberAI.Avatars;
 using EmberAI.Core;
+using EmberAI.Core.Util;
 using EmberAI.Futureverse.AssetRegistry;
-using EmberAI.Futureverse.FuturePass;
 using EmberAI.UI;
+using Futureverse.AlteredState;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SamplesUI : EmberBehaviour
+namespace EmberAI.Samples
 {
-    #region EVENTS /////////////////////////////////////////////////////////////////////////////////////////////////        
-
-    #endregion
-
-    #region ENUMS //////////////////////////////////////////////////////////////////////////////////////////////////
-
-    #endregion
-
-    #region FIELDS /////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private List<AssetItem> _assets;
-    
-    private Vector2 _sidePanelOriginalPas, _bottomPanelOriginalPas;
-
-    private bool _panelsVisible;
-    
-    private const string Blurb = "Modular framework providing tools for Metaverse / Blockchain / Extended Reality / AI experiences.";
-
-    [BoxGroup("Settings"), SerializeField] 
-    private Vector2 sidePanelHidePosition;
-    
-    [BoxGroup("Settings"), SerializeField] 
-    private Vector2 bottomPanelHidePosition;
-    
-    [BoxGroup("UI"), SerializeField] 
-    private RectTransform sidePanel;
-
-    [BoxGroup("UI"), SerializeField] 
-    private RectTransform bottomPanel;
-    
-    [BoxGroup("UI"), SerializeField] 
-    private ThumbnailSelector _thumbnailSelector;
-    
-    [BoxGroup("UI"), SerializeField] 
-    private TextMeshProUGUI headerTXT;
-    [BoxGroup("UI"), SerializeField] 
-    private TMP_InputField urlInput;
-
-    [BoxGroup("UI"), SerializeField] 
-    private Button loadButton;
-
-    [BoxGroup("Components"), SerializeField]
-    private GLBBehaviour _GLBTarget;
-
-    [BoxGroup("Components"), SerializeField]
-    private CharacterControllerSystem _characterController;
-
-    [BoxGroup("Avatar Configs"), SerializeField]
-    private List<AvatarConfig> avatarConfigs;
-    
-    #endregion
-
-    #region PROPERTIES /////////////////////////////////////////////////////////////////////////////////////////////           
-
-    #endregion
-
-    #region METHODS ////////////////////////////////////////////////////////////////////////////////////////////////
-
-    #region Static .................................................................................................
-
-    #endregion
-
-    #region Inspector ..............................................................................................
-
-    [ButtonGroup("Tests", "Show Panels")]
-    private void ShowPanels()
+    public class SamplesUI : EmberBehaviour
     {
-        SetPanelsVisible(true);
-    }
-    
-    [ButtonGroup("Tests", "Hide Panels")]
-    private void HidePanels()
-    {
-        SetPanelsVisible(false);
-    }
-    
-    [ButtonGroup("Collections", "Load Goblins")]
-    private void LoadGoblins()
-    {
-        AssetRegistryManager.Instance.GetAssets(AssetRegistryManager.GoblinCollectionID);
-    }
-    
-    #endregion
+        #region FIELDS /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    #region Initialization .........................................................................................
+        private const string Blurb = "TASM. The Altered State Machine. You are not ready....";
 
-    
-    
-    #endregion
+        [BoxGroup("Settings"), SerializeField]
+        private AvatarConfig avatarConfigs;
+       
+        [BoxGroup("Settings"), SerializeField, Tooltip("Delay in seconds before toggling UI visible when no input is detected.")] 
+        private float showUIDelay = 3;
 
-    #region MonoBehaviours .........................................................................................
+        [BoxGroup("UI"), SerializeField]
+        private ThumbnailSelector avatarSelector, brainSelector;
 
-    protected override void OnAwake()
-    {
-        base.OnAwake();
-    
-        SetHeaderText("Logging in to FuturePass...");
+        [BoxGroup("UI"), SerializeField]
+        private TextMeshProUGUI headerTXT;
 
-        _sidePanelOriginalPas = sidePanel.anchoredPosition;
-        _bottomPanelOriginalPas = bottomPanel.anchoredPosition;
+        [BoxGroup("Components"), SerializeField]
+        private GLBBehaviour _GLBTarget;
 
-        urlInput.text = "file:///Users/vinnievivace/Documents/Ember/Ember-SDK.com%20uploads/Samples/GLB/Ailu/1229.glb";
-
-    }
-
-    protected override void OnUpdate()
-    {
-        base.OnUpdate();
-
-        SetPanelsVisible(!_characterController.HasInput);
+        [BoxGroup("Components"), SerializeField]
+        private CharacterControllerSystem _characterController;
         
-    }
+        [BoxGroup("Debug"), ReadOnly, SerializeField]
+        private bool PanelsVisible;
 
-    private void OnEnable()
-    {
-        loadButton.onClick.AddListener(OnClickLoad);
-        
-        _GLBTarget.OnLoadComplete += GLBTargetOnOnLoadComplete;
-        _GLBTarget.OnLoadError += GLBTargetOnLoadOnLoadError;
-        
-        _thumbnailSelector.OnItemClicked += ThumbnailSelectorOnOnItemClicked;
-        
-        FPAuthManager.Instance.OnLoginComplete += OnLoggedIn;
-        AssetRegistryManager.Instance.OnAssetsLoaded += OnARAssetsLoaded;
-    }
+        #endregion
 
-    private void OnDisable()
-    {
-        loadButton.onClick.RemoveListener(OnClickLoad);
-        
-        _GLBTarget.OnLoadComplete -= GLBTargetOnOnLoadComplete;
-        _GLBTarget.OnLoadError -= GLBTargetOnLoadOnLoadError;
-        
-        //AssetRegistryManager.Instance.OnAssetsLoaded -= OnARAssetsLoaded;
-    }
-    
-    #endregion
+        #region INSPECTOR TEST BUTTONS /////////////////////////////////////////////////////////////////////////////////
 
-    #region General ................................................................................................
+        #endregion
 
-    private AvatarConfig GetAvatarConfig(string path)
-    {
-        foreach (AvatarConfig config in avatarConfigs)
+        #region MONOBEHAVIOURS /////////////////////////////////////////////////////////////////////////////////////////
+
+        protected override void OnAwake()
         {
-            if (path.ToLower().Contains(config.nameHint.ToLower())) return config;
+            base.OnAwake();
+
+            SetHeaderText("Logging in to FuturePass...");
+            
+            // sometimes disable the canvas in edit mode for visibility, so ensure its enabled!
+            GetComponent<Canvas>().enabled = true;
         }
 
-        throw new Exception("No Valid Avatar Config Found for " + path);
-    }
-
-    private void SetHeaderText(string message, int resetTime = 0)
-    {
-        headerTXT.text = $"<b><color=yellow>{message}</color></b>";
-        
-        if(resetTime > 0) CallbackManager.AddOneOff(this, resetTime, () => headerTXT.text = $"<color=white>{Blurb}</color>");
-    }
-
-    public void SetPanelsVisible(bool visible, bool tween = true)
-    {
-        if (visible)
+        protected override void OnUpdate()
         {
-            SetPanelPosition(sidePanel, _sidePanelOriginalPas, tween);
-            SetPanelPosition(bottomPanel, _bottomPanelOriginalPas, tween);
+            base.OnUpdate();
+            
+            bool shouldBeVisible = !InputUtil.AnyCurrentInput();
+            bool tweenVisibility = true;
+
+            if (ModalPopup.Instance.Active)
+            {
+                shouldBeVisible = false;
+                tweenVisibility = false;
+            } 
+
+            if (shouldBeVisible != PanelsVisible)
+            {
+                // when we have no input, apply a delay before toggling the UI visible.
+                if (shouldBeVisible)
+                {
+                    CallbackManager.AddOneOff(this, showUIDelay, () =>
+                    {
+                        avatarSelector.SetVisible(true);
+                        brainSelector.SetVisible(true);
+                    });
+                }
+                else
+                {
+                    avatarSelector.SetVisible(false, tweenVisibility);
+                    brainSelector.SetVisible(false, tweenVisibility);
+                }
+                
+                PanelsVisible = shouldBeVisible;
+            }
         }
-        else
+
+        private void OnEnable()
         {
-            SetPanelPosition(sidePanel, sidePanelHidePosition, tween);
-            SetPanelPosition(bottomPanel, bottomPanelHidePosition, tween);
-        }
-    }
+            _GLBTarget.OnLoadComplete += GLBTargetOnOnLoadComplete;
+            _GLBTarget.OnLoadError += GLBTargetOnLoadOnLoadError;
 
-    private void SetPanelPosition(RectTransform panel, Vector2 position, bool tween = true)
-    {
-        if (tween)
+            avatarSelector.OnItemClicked += AvatarSelectorOnOnItemClicked;
+            brainSelector.OnItemClicked += BrainSelectorOnOnItemClicked;
+        }
+
+        private void OnDisable()
         {
-            TweenUtil.TweenVector2(panel.anchoredPosition, position, 0.5f, position => { panel.anchoredPosition = position;}, () => { });
+            _GLBTarget.OnLoadComplete -= GLBTargetOnOnLoadComplete;
+            _GLBTarget.OnLoadError -= GLBTargetOnLoadOnLoadError;
+
+            avatarSelector.OnItemClicked -= AvatarSelectorOnOnItemClicked;
+            brainSelector.OnItemClicked -= BrainSelectorOnOnItemClicked;
         }
-        else
+
+        #endregion
+
+        #region PANEL & UI LOGIC ///////////////////////////////////////////////////////////////////////////////////////
+
+        public void SetHeaderText(string message, int resetTime = 0)
         {
-            panel.anchoredPosition = position;
+            headerTXT.text = $"<b><color=yellow>{message}</color></b>";
+
+            if (resetTime > 0) CallbackManager.AddOneOff(this, resetTime, () => headerTXT.text = $"<color=white>{Blurb}</color>");
         }
-    }
 
-    #endregion
-
-    #region Event Handlers .........................................................................................
-
-    private void OnClickLoad()
-    {
-        SetHeaderText("Loading...");
-        
-        _GLBTarget.avatarConfig = GetAvatarConfig(urlInput.text);
-        _GLBTarget.LoadGLB(urlInput.text);
-    }
-    
-    private void GLBTargetOnOnLoadComplete(string path)
-    {
-        SetHeaderText("Loaded", 1);
-        urlInput.text = "";
-    }
-    
-    private void GLBTargetOnLoadOnLoadError(string error)
-    {
-        SetHeaderText(error, 5);
-    }
-    
-    private void OnLoggedIn()
-    {
-        SetHeaderText("Retrieving FuturePass Assets...");
-        
-        AssetRegistryManager.Instance.GetAssets(AssetRegistryManager.AlteredStateCollectionID);
-    }
-    
-    private void OnARAssetsLoaded(string collectionID, List<AssetItem> assets)
-    {
-        _assets = assets;
-        
-        foreach (AssetItem asset in assets)
+        public void PopulateAvatarSelector(List<AssetItem> avatars)
         {
-            _thumbnailSelector.AddItem(asset.TokenID, asset.ImagePath);
+            foreach (AssetItem asset in avatars)
+            {
+                avatarSelector.AddItem(asset.TokenID, asset.ImagePath);
+            }
+
+            SetHeaderText("Assets Loaded", 5);
+        }
+
+        public void PopulateBrainSelector(List<AssetItem> brains)
+        {
+            foreach (AssetItem asset in brains)
+            {
+                brainSelector.AddItem(asset.TokenID, asset.TransparentImagePath);
+            }
+
+            SetHeaderText("Assets Loaded", 5);
+        }
+
+        #endregion
+
+        #region EVENT HANDLERS /////////////////////////////////////////////////////////////////////////////////////////
+
+        private void GLBTargetOnOnLoadComplete(string path)
+        {
+            SetHeaderText("Loaded", 1);
+        }
+
+        private void GLBTargetOnLoadOnLoadError(string error)
+        {
+            SetHeaderText(error, 5);
+        }
+
+        private void AvatarSelectorOnOnItemClicked(string tokenID)
+        {
+            SetHeaderText("Loading Avatar " + tokenID + "...");
+            
+            string selectedPath = SamplesManager.Instance.Avatars.Find(i => i.TokenID == tokenID).GLBPath;
+
+            _GLBTarget.avatarConfig = avatarConfigs;
+            _GLBTarget.LoadGLB(selectedPath);
         }
         
-        SetHeaderText("Assets Loaded", 5);
-    }
-    
-    private void ThumbnailSelectorOnOnItemClicked(string tokenID)
-    {
-        urlInput.text = _assets.Find(i => i.TokenID == tokenID).GLBPath;
-        
-        OnClickLoad();
-    }
-    
-    #endregion
+        private void BrainSelectorOnOnItemClicked(string tokenID)
+        {
+            SetHeaderText("Loading Brain " + tokenID + "...");
+            
+            //string selectedPath = TASMManager.Instance.Brains.Find(i => i.TokenID == tokenID).GLBPath;
 
-    #endregion
-    
+            //Debug.Log(selectedPath);
+            
+            CallbackManager.AddOneOff(this, 1, () =>
+            {
+                GLBTargetOnOnLoadComplete("");
+
+                ASAvatar avatar = FindAnyObjectByType<ASAvatar>();
+
+                avatar.Brain = avatar.GetOrAddComponent<ASMBrain>();
+                
+                avatar.GetComponentInChildren<Animator>().SetBool("HasBrain", true);
+                    
+                
+                
+                Debug.LogError("fuck around, find out.");
+            });
+        }
+
+        #endregion
+    }
 }

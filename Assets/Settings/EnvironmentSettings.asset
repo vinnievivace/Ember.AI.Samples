@@ -16,15 +16,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   slopeLimit: 30
-  sunIntensity: 20000
-  sunTemperature: 5000
+  sunIntensity: 20843
+  sunTemperature: 5676
   shadowStrength: 0.75
   AvatarLightLayer:
     serializedVersion: 0
     m_Bits: 33
   avatarSpotIntensity: 100000
   avatarSpotTemperature: 5000
-  avatarSpotWidth: 5
+  avatarSpotWidth: -12.71
   avatarSpotHeight: 0.9
-  avatarSpotDistance: 2
-  avatarSpotYOffset: 0
+  avatarSpotDistance: 0
+  avatarSpotYOffset: -1.13
